@@ -1,0 +1,37 @@
+{
+  "name": "genpark-instacart-cart-substitution-affinity-resolver-skill",
+  "version": "1.0.0",
+  "description": "Instacart AI & Walmart Grocery-inspired Cart Substitution & Preference Affinity Resolver. Solves real-time out-of-stock product disruptions by enforcing dietary constraints (vegan, gluten-free, organic), unit price delta ceilings (+15%), and brand affinity scoring.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "resolve_out_of_stock_substitution",
+      "description": "Select the highest affinity replacement item for an out-of-stock grocery product.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "original_item": {
+            "type": "object",
+            "description": "Out-of-stock item: title, brand, price_usd, dietary_tags, category."
+          },
+          "available_inventory": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Candidate replacement items in stock."
+          },
+          "customer_preferences": {
+            "type": "object",
+            "description": "Max price delta pct, strict dietary requirements, preferred brands."
+          }
+        },
+        "required": [
+          "original_item",
+          "available_inventory"
+        ]
+      }
+    }
+  ]
+}
